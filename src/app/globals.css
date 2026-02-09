@@ -322,3 +322,44 @@ body {
 .hr-reveal.is-visible {
   transform: scaleX(1);
 }
+
+/* ─── Preloader ─── */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  transition: opacity 0.9s var(--ease);
+  pointer-events: none;
+}
+
+.preloader.is-hidden {
+  opacity: 0;
+}
+
+.preloader__brand {
+  font-family: var(--font-display), "Arial Black", sans-serif;
+  font-size: 32px;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  font-style: italic;
+  transform: skewX(-8deg);
+  font-kerning: none;
+  color: var(--c-fg);
+  text-shadow: 0 0 60px var(--c-fg-ghost), 0 0 120px var(--c-fg-phantom);
+}
+
+.preloader__tagline {
+  font-family: var(--font-mono), monospace;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  font-kerning: none;
+  color: var(--c-fg-secondary);
+}

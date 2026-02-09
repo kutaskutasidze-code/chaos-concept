@@ -8,6 +8,7 @@ import { ScrambleText } from "@/components/ScrambleText";
 import { Marquee } from "@/components/Marquee";
 import { HorizontalRule } from "@/components/HorizontalRule";
 import { Navbar } from "@/components/Navbar";
+import { Preloader } from "@/components/Preloader";
 
 const BRANDS = [
   "HOUSE OF HOLLAND",
@@ -500,6 +501,7 @@ function Footer() {
 export default function Home() {
   return (
     <SmoothScroll>
+      <Preloader />
       <Navbar />
       <main>
         <Hero />

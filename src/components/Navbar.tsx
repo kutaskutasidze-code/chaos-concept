@@ -3,16 +3,12 @@
 import { useEffect, useState } from "react";
 
 export function Navbar() {
-  const [phase, setPhase] = useState<"preloader" | "fadeout" | "done">("preloader");
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    // Show preloader text, then fade out
-    const t1 = setTimeout(() => setPhase("fadeout"), 1800);
-    const t2 = setTimeout(() => setPhase("done"), 2700);
-    return () => { clearTimeout(t1); clearTimeout(t2); };
+    const timer = setTimeout(() => setReady(true), 2800);
+    return () => clearTimeout(timer);
   }, []);
-
-  const ready = phase === "done";
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -28,39 +24,6 @@ export function Navbar() {
 
   return (
     <>
-      {/* ── Preloader ── */}
-      {phase !== "done" && (
-        <div
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center gap-4 bg-bg"
-          style={{
-            opacity: phase === "fadeout" ? 0 : 1,
-            transition: "opacity 0.9s cubic-bezier(0.215, 0.61, 0.355, 1)",
-            pointerEvents: phase === "fadeout" ? "none" : "auto",
-          }}
-        >
-          <span
-            className="font-[family-name:var(--font-syne)] text-[32px] font-800 uppercase text-c-fg tracking-[-0.04em]"
-            style={{
-              fontStyle: "italic",
-              transform: "skewX(-8deg)",
-              opacity: phase === "preloader" ? 1 : 0,
-              transition: "opacity 0.4s ease",
-            }}
-          >
-            CHAOS
-          </span>
-          <span
-            className="font-[family-name:var(--font-dm-mono)] text-[12px] uppercase tracking-[0.15em] text-c-fg-muted"
-            style={{
-              opacity: phase === "preloader" ? 0.6 : 0,
-              transition: "opacity 0.4s ease 0.15s",
-            }}
-          >
-            Concept Store — Tbilisi
-          </span>
-        </div>
-      )}
-
       {/* ── Left nav items ── */}
       <a
         href="#brands"
