@@ -5,9 +5,7 @@
   --bg: #000000;
   --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --font-display: var(--font-logo);
-  --font-body: var(--font-body);
-  --font-mono: var(--font-typewriter);
+  /* Font aliases — Next.js sets --font-logo, --font-body, --font-typewriter, --font-display on html */
 
   /* Foreground semantic tokens */
   --c-fg: #ffffff;
@@ -95,9 +93,9 @@
   --color-c-border-subtle: var(--c-border-subtle);
   --color-c-border-hover: var(--c-border-hover);
   --color-c-border-strong: var(--c-border-strong);
-  --font-display: var(--font-display);
+  --font-display: var(--font-logo);
   --font-body: var(--font-body);
-  --font-mono: var(--font-mono);
+  --font-mono: var(--font-typewriter);
 }
 
 /* ─── Base ─── */
@@ -343,7 +341,7 @@ body {
 }
 
 .preloader__brand {
-  font-family: var(--font-display), "Arial Black", sans-serif;
+  font-family: var(--font-logo), "Arial Black", sans-serif;
   font-size: 32px;
   letter-spacing: -0.04em;
   text-transform: uppercase;
@@ -355,7 +353,7 @@ body {
 }
 
 .preloader__tagline {
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-typewriter), sans-serif;
   font-size: 14px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
