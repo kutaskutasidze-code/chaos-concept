@@ -46,7 +46,7 @@ function Hero() {
   }, []);
 
   return (
-    <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative h-screen flex flex-col justify-end overflow-hidden">
       {/* Background noise pulse */}
       <div className="absolute inset-0 hero-glow" />
 
@@ -56,10 +56,10 @@ function Hero() {
         style={{ width: loaded ? "100%" : "0%" }}
       />
 
-      {/* Main title */}
-      <div className="relative z-10 text-center px-6">
+      {/* Main title — left-aligned, bottom-anchored like NKD Souls */}
+      <div className="relative z-10 px-6 md:px-10 pb-20 md:pb-24 max-w-[1440px] mx-auto w-full">
         <div
-          className="font-[family-name:var(--font-dm-mono)] text-[10px] tracking-[0.3em] uppercase text-c-fg-faint mb-6 transition-all duration-1000"
+          className="font-[family-name:var(--font-typewriter)] text-[10px] tracking-[0.3em] uppercase text-c-fg-faint mb-6 transition-all duration-1000"
           style={{
             opacity: loaded ? 1 : 0,
             transform: loaded ? "translateY(0)" : "translateY(10px)",
@@ -69,11 +69,11 @@ function Hero() {
         </div>
 
         <h1
-          className="glitch-text font-[family-name:var(--font-syne)] text-[clamp(3rem,12vw,10rem)] font-800 leading-[0.85] tracking-[-0.03em] text-c-fg uppercase"
+          className="glitch-text font-[family-name:var(--font-logo)] text-[clamp(3rem,12vw,10rem)] font-900 leading-[0.85] tracking-[-0.02em] text-c-fg uppercase italic"
           data-text="CHAOS"
           style={{
+            transform: loaded ? "skewX(-8deg)" : "skewX(-8deg) translateY(30px)",
             opacity: loaded ? 1 : 0,
-            transform: loaded ? "translateY(0)" : "translateY(30px)",
             transition: "all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s",
           }}
         >
@@ -81,10 +81,10 @@ function Hero() {
         </h1>
 
         <h2
-          className="font-[family-name:var(--font-syne)] text-[clamp(1.5rem,5vw,4rem)] font-300 tracking-[0.15em] text-c-fg-secondary uppercase mt-2"
+          className="font-[family-name:var(--font-logo)] text-[clamp(1.5rem,5vw,4rem)] font-900 tracking-[-0.02em] text-c-fg-secondary uppercase italic mt-1"
           style={{
+            transform: loaded ? "skewX(-8deg)" : "skewX(-8deg) translateY(20px)",
             opacity: loaded ? 1 : 0,
-            transform: loaded ? "translateY(0)" : "translateY(20px)",
             transition: "all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s",
           }}
         >
@@ -92,7 +92,7 @@ function Hero() {
         </h2>
 
         <p
-          className="font-[family-name:var(--font-dm-mono)] text-[11px] tracking-[0.15em] uppercase text-c-fg-ghost mt-10 max-w-md mx-auto"
+          className="font-[family-name:var(--font-typewriter)] text-[11px] tracking-[0.15em] uppercase text-c-fg-ghost mt-10 max-w-md"
           style={{
             opacity: loaded ? 1 : 0,
             transition: "opacity 1s ease 1s",
@@ -112,7 +112,7 @@ function BrandMarquee() {
       <Marquee
         items={BRANDS}
         separator="  ·  "
-        className="font-[family-name:var(--font-dm-mono)] text-[11px] tracking-[0.15em] uppercase text-c-fg-ghost"
+        className="font-[family-name:var(--font-typewriter)] text-[11px] tracking-[0.15em] uppercase text-c-fg-ghost"
       />
     </section>
   );
@@ -123,19 +123,19 @@ function Manifesto() {
     <section id="manifesto" className="py-32 md:py-48 px-6 md:px-10">
       <div className="max-w-5xl mx-auto">
         <CinemaReveal direction="left">
-          <span className="font-[family-name:var(--font-dm-mono)] text-[10px] tracking-[0.3em] uppercase text-c-fg-faint block mb-8">
+          <span className="font-[family-name:var(--font-typewriter)] text-[10px] tracking-[0.3em] uppercase text-c-fg-faint block mb-8">
             [ 001 — MANIFESTO ]
           </span>
         </CinemaReveal>
 
         <CinemaReveal delay={200}>
-          <h3 className="font-[family-name:var(--font-syne)] text-[clamp(1.5rem,4vw,3.5rem)] font-300 leading-[1.2] text-c-fg-primary max-w-3xl">
+          <h3 className="font-[family-name:var(--font-logo)] text-[clamp(1.5rem,4vw,3.5rem)] font-900 leading-[1.1] text-c-fg-primary max-w-3xl italic" style={{ transform: "skewX(-8deg)" }}>
             <ScrambleText text="We don't follow trends." delay={400} />
           </h3>
         </CinemaReveal>
 
         <CinemaReveal delay={400}>
-          <h3 className="font-[family-name:var(--font-syne)] text-[clamp(1.5rem,4vw,3.5rem)] font-300 leading-[1.2] text-c-fg-muted max-w-3xl mt-2">
+          <h3 className="font-[family-name:var(--font-logo)] text-[clamp(1.5rem,4vw,3.5rem)] font-900 leading-[1.1] text-c-fg-muted max-w-3xl mt-2 italic" style={{ transform: "skewX(-8deg)" }}>
             We curate chaos.
           </h3>
         </CinemaReveal>
@@ -144,7 +144,7 @@ function Manifesto() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
           <CinemaReveal delay={300} direction="up">
-            <p className="font-[family-name:var(--font-space-grotesk)] text-sm leading-[1.8] text-c-fg-tertiary max-w-md">
+            <p className="font-[family-name:var(--font-body)] text-sm leading-[1.8] text-c-fg-tertiary max-w-md">
               Born in 2016 on Tbilisi&apos;s Kostava Street, Chaos Concept Store
               reflects the spirit of the 21st century — where alternative culture,
               new punk, and skater aesthetics converge. A Soviet kiosk serves as
@@ -154,7 +154,7 @@ function Manifesto() {
           </CinemaReveal>
 
           <CinemaReveal delay={500} direction="up">
-            <p className="font-[family-name:var(--font-space-grotesk)] text-sm leading-[1.8] text-c-fg-tertiary max-w-md">
+            <p className="font-[family-name:var(--font-body)] text-sm leading-[1.8] text-c-fg-tertiary max-w-md">
               We bridge international fashion houses with Georgian designers —
               from House of Holland to George Keburia, from Alpha Industries to
               LTFR. Each piece tells a story. Each visit is an experience.
@@ -171,11 +171,11 @@ function Manifesto() {
             { value: "∞", label: "CHAOS" },
           ].map((stat, i) => (
             <CinemaReveal key={stat.label} delay={200 + i * 150} direction="up">
-              <div className="text-center">
-                <div className="font-[family-name:var(--font-syne)] text-[clamp(2rem,5vw,4rem)] font-700 text-c-fg-primary">
+              <div>
+                <div className="font-[family-name:var(--font-logo)] text-[clamp(2rem,5vw,4rem)] font-900 text-c-fg-primary italic" style={{ transform: "skewX(-8deg)" }}>
                   {stat.value}
                 </div>
-                <div className="font-[family-name:var(--font-dm-mono)] text-[10px] tracking-[0.2em] uppercase text-c-fg-ghost mt-2">
+                <div className="font-[family-name:var(--font-typewriter)] text-[10px] tracking-[0.2em] uppercase text-c-fg-ghost mt-2">
                   {stat.label}
                 </div>
               </div>
@@ -189,7 +189,7 @@ function Manifesto() {
 
 function GalleryLabel({ text }: { text: string }) {
   return (
-    <span className="font-[family-name:var(--font-dm-mono)] text-[10px] tracking-[0.2em] uppercase text-c-fg-ghost mt-3 block">
+    <span className="font-[family-name:var(--font-typewriter)] text-[10px] tracking-[0.2em] uppercase text-c-fg-ghost mt-3 block">
       {text}
     </span>
   );
@@ -200,7 +200,7 @@ function Gallery() {
     <section id="gallery" className="py-32 md:py-48 px-6 md:px-10">
       <div className="max-w-6xl mx-auto">
         <CinemaReveal direction="left">
-          <span className="font-[family-name:var(--font-dm-mono)] text-[10px] tracking-[0.3em] uppercase text-c-fg-faint block mb-12">
+          <span className="font-[family-name:var(--font-typewriter)] text-[10px] tracking-[0.3em] uppercase text-c-fg-faint block mb-12">
             [ 002 — ATMOSPHERE ]
           </span>
         </CinemaReveal>
@@ -318,10 +318,10 @@ function Gallery() {
             <div className="md:col-span-4 flex items-end pb-8">
               <CinemaReveal delay={400} direction="right">
                 <div>
-                  <span className="font-[family-name:var(--font-dm-mono)] text-[10px] tracking-[0.2em] uppercase text-c-fg-whisper block mb-3">
+                  <span className="font-[family-name:var(--font-typewriter)] text-[10px] tracking-[0.2em] uppercase text-c-fg-whisper block mb-3">
                     10 FRAMES
                   </span>
-                  <p className="font-[family-name:var(--font-space-grotesk)] text-sm leading-[1.8] text-c-fg-faint">
+                  <p className="font-[family-name:var(--font-body)] text-sm leading-[1.8] text-c-fg-faint">
                     A visual diary from the intersection of fashion,
                     art, and subculture. Shot in and around the store.
                   </p>
@@ -341,7 +341,7 @@ function Brands() {
     <section id="brands" className="py-32 md:py-48 px-6 md:px-10 border-y border-c-border">
       <div className="max-w-5xl mx-auto">
         <CinemaReveal direction="left">
-          <span className="font-[family-name:var(--font-dm-mono)] text-[10px] tracking-[0.3em] uppercase text-c-fg-faint block mb-12">
+          <span className="font-[family-name:var(--font-typewriter)] text-[10px] tracking-[0.3em] uppercase text-c-fg-faint block mb-12">
             [ 003 — CURATION ]
           </span>
         </CinemaReveal>
@@ -350,7 +350,7 @@ function Brands() {
           {BRANDS.map((brand, i) => (
             <CinemaReveal key={brand} delay={i * 80} direction="up">
               <div className="group py-4 border-b border-c-border hover:border-c-border-hover transition-colors duration-500 cursor-default">
-                <span className="font-[family-name:var(--font-space-grotesk)] text-sm font-300 text-c-fg-muted group-hover:text-c-fg transition-colors duration-500">
+                <span className="font-[family-name:var(--font-body)] text-sm font-300 text-c-fg-muted group-hover:text-c-fg transition-colors duration-500">
                   {brand}
                 </span>
               </div>
@@ -359,7 +359,7 @@ function Brands() {
         </div>
 
         <CinemaReveal delay={600}>
-          <p className="font-[family-name:var(--font-dm-mono)] text-[10px] tracking-[0.15em] uppercase text-c-fg-whisper mt-12 text-center">
+          <p className="font-[family-name:var(--font-typewriter)] text-[10px] tracking-[0.15em] uppercase text-c-fg-whisper mt-12">
             + Georgian designers + Our own label
           </p>
         </CinemaReveal>
@@ -373,7 +373,7 @@ function Contact() {
     <section id="contact" className="py-32 md:py-48 px-6 md:px-10">
       <div className="max-w-5xl mx-auto">
         <CinemaReveal direction="left">
-          <span className="font-[family-name:var(--font-dm-mono)] text-[10px] tracking-[0.3em] uppercase text-c-fg-faint block mb-12">
+          <span className="font-[family-name:var(--font-typewriter)] text-[10px] tracking-[0.3em] uppercase text-c-fg-faint block mb-12">
             [ 004 — LOCATE ]
           </span>
         </CinemaReveal>
@@ -381,10 +381,10 @@ function Contact() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20">
           <div>
             <CinemaReveal delay={200}>
-              <h3 className="font-[family-name:var(--font-syne)] text-[clamp(1.5rem,3vw,2.5rem)] font-300 text-c-fg-primary leading-[1.2]">
+              <h3 className="font-[family-name:var(--font-logo)] text-[clamp(1.5rem,3vw,2.5rem)] font-900 text-c-fg-primary leading-[1.1] italic" style={{ transform: "skewX(-8deg)" }}>
                 14 Merab Kostava St.
               </h3>
-              <h3 className="font-[family-name:var(--font-syne)] text-[clamp(1.5rem,3vw,2.5rem)] font-300 text-c-fg-muted leading-[1.2]">
+              <h3 className="font-[family-name:var(--font-logo)] text-[clamp(1.5rem,3vw,2.5rem)] font-900 text-c-fg-muted leading-[1.1] italic" style={{ transform: "skewX(-8deg)" }}>
                 Tbilisi, Georgia
               </h3>
             </CinemaReveal>
@@ -394,16 +394,16 @@ function Contact() {
             <CinemaReveal delay={400}>
               <div className="space-y-4">
                 <div>
-                  <span className="font-[family-name:var(--font-dm-mono)] text-[10px] tracking-[0.2em] uppercase text-c-fg-ghost block mb-1">
+                  <span className="font-[family-name:var(--font-typewriter)] text-[10px] tracking-[0.2em] uppercase text-c-fg-ghost block mb-1">
                     HOURS
                   </span>
-                  <span className="font-[family-name:var(--font-space-grotesk)] text-sm text-c-fg-tertiary">
+                  <span className="font-[family-name:var(--font-body)] text-sm text-c-fg-tertiary">
                     Mon — Sat, 11:00 — 20:00
                   </span>
                 </div>
 
                 <div>
-                  <span className="font-[family-name:var(--font-dm-mono)] text-[10px] tracking-[0.2em] uppercase text-c-fg-ghost block mb-1">
+                  <span className="font-[family-name:var(--font-typewriter)] text-[10px] tracking-[0.2em] uppercase text-c-fg-ghost block mb-1">
                     CONNECT
                   </span>
                   <div className="flex gap-6">
@@ -411,7 +411,7 @@ function Contact() {
                       href="https://www.instagram.com/chaosconcept/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-[family-name:var(--font-space-grotesk)] text-sm text-c-fg-tertiary hover:text-c-fg transition-colors duration-300 border-b border-c-border-subtle hover:border-c-border-strong"
+                      className="font-[family-name:var(--font-body)] text-sm text-c-fg-tertiary hover:text-c-fg transition-colors duration-300 border-b border-c-border-subtle hover:border-c-border-strong"
                     >
                       Instagram
                     </a>
@@ -419,7 +419,7 @@ function Contact() {
                       href="https://chaosconceptstore.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-[family-name:var(--font-space-grotesk)] text-sm text-c-fg-tertiary hover:text-c-fg transition-colors duration-300 border-b border-c-border-subtle hover:border-c-border-strong"
+                      className="font-[family-name:var(--font-body)] text-sm text-c-fg-tertiary hover:text-c-fg transition-colors duration-300 border-b border-c-border-subtle hover:border-c-border-strong"
                     >
                       Shop
                     </a>
@@ -438,7 +438,7 @@ function Contact() {
                 aspectRatio="1/1"
               />
               <div className="absolute bottom-4 left-4 right-4 bg-c-surface-dim backdrop-blur-sm px-4 py-3 border border-c-border">
-                <span className="font-[family-name:var(--font-dm-mono)] text-[10px] tracking-[0.15em] uppercase text-c-fg-muted">
+                <span className="font-[family-name:var(--font-typewriter)] text-[10px] tracking-[0.15em] uppercase text-c-fg-muted">
                   42.7128° N, 44.8023° E
                 </span>
               </div>
@@ -472,24 +472,24 @@ function Footer() {
     <footer className="border-t border-c-border py-12 px-6 md:px-10">
       <div className="max-w-5xl mx-auto">
         {/* Big brand text */}
-        <CinemaReveal direction="center">
-          <div className="text-center mb-16">
-            <h2 className="font-[family-name:var(--font-syne)] text-[clamp(3rem,10vw,8rem)] font-800 leading-[0.85] tracking-[-0.03em] text-c-fg-phantom uppercase select-none">
+        <CinemaReveal direction="left">
+          <div className="mb-16">
+            <h2 className="font-[family-name:var(--font-logo)] text-[clamp(3rem,10vw,8rem)] font-900 leading-[0.85] tracking-[-0.02em] text-c-fg-phantom uppercase select-none italic" style={{ transform: "skewX(-8deg)" }}>
               CHAOS
             </h2>
           </div>
         </CinemaReveal>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="font-[family-name:var(--font-dm-mono)] text-[10px] tracking-[0.15em] uppercase text-c-fg-whisper">
+          <span className="font-[family-name:var(--font-typewriter)] text-[10px] tracking-[0.15em] uppercase text-c-fg-whisper">
             Tbilisi — {time}
           </span>
 
-          <span className="font-[family-name:var(--font-dm-mono)] text-[10px] tracking-[0.15em] uppercase text-c-fg-whisper">
+          <span className="font-[family-name:var(--font-typewriter)] text-[10px] tracking-[0.15em] uppercase text-c-fg-whisper">
             Chaos Concept Store
           </span>
 
-          <span className="font-[family-name:var(--font-dm-mono)] text-[10px] tracking-[0.15em] uppercase text-c-fg-whisper">
+          <span className="font-[family-name:var(--font-typewriter)] text-[10px] tracking-[0.15em] uppercase text-c-fg-whisper">
             Since 2016
           </span>
         </div>

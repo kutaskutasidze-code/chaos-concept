@@ -1,23 +1,33 @@
 import type { Metadata } from "next";
-import { Syne, Space_Grotesk, DM_Mono } from "next/font/google";
+import { Cormorant, Space_Grotesk, Archivo_Black, Oswald } from "next/font/google";
 import "./globals.css";
 
-const syne = Syne({
-  variable: "--font-syne",
+const display = Cormorant({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-display",
+  weight: ["400"],
+  display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const body = Space_Grotesk({
   subsets: ["latin"],
+  variable: "--font-body",
   weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
 });
 
-const dmMono = DM_Mono({
-  variable: "--font-dm-mono",
+const logo = Archivo_Black({
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  variable: "--font-logo",
+  weight: ["400"],
+  display: "swap",
+});
+
+const typewriter = Oswald({
+  subsets: ["latin"],
+  variable: "--font-typewriter",
+  weight: ["700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -35,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${syne.variable} ${spaceGrotesk.variable} ${dmMono.variable}`}
+        className={`${display.variable} ${body.variable} ${logo.variable} ${typewriter.variable}`}
       >
         {children}
         <div className="film-grain-css" />

@@ -28,11 +28,11 @@ export function Navbar() {
       <a
         href="#brands"
         onClick={(e) => handleClick(e, "#brands")}
-        className="fixed top-8 left-8 md:left-12 z-50 font-[family-name:var(--font-space-grotesk)] text-[14px] md:text-[16px] font-500 tracking-[-0.02em] text-c-fg-secondary hover:text-c-fg transition-colors duration-300"
+        className="fixed top-8 left-8 md:left-12 z-50 font-[family-name:var(--font-body)] text-[14px] md:text-[16px] font-500 tracking-[-0.02em] text-c-fg-secondary hover:text-c-fg transition-colors duration-300"
         style={linkStyle(0.1)}
       >
         Brands
-        <span className="font-[family-name:var(--font-dm-mono)] text-[10px] text-c-fg-ghost ml-1.5">
+        <span className="font-[family-name:var(--font-typewriter)] text-[10px] text-c-fg-ghost ml-1.5">
           30+
         </span>
       </a>
@@ -40,7 +40,7 @@ export function Navbar() {
       <a
         href="#gallery"
         onClick={(e) => handleClick(e, "#gallery")}
-        className="fixed top-8 left-[120px] md:left-[160px] z-50 font-[family-name:var(--font-space-grotesk)] text-[14px] md:text-[16px] font-500 tracking-[-0.02em] text-c-fg-secondary hover:text-c-fg transition-colors duration-300"
+        className="fixed top-8 left-[120px] md:left-[160px] z-50 font-[family-name:var(--font-body)] text-[14px] md:text-[16px] font-500 tracking-[-0.02em] text-c-fg-secondary hover:text-c-fg transition-colors duration-300"
         style={linkStyle(0.2)}
       >
         Gallery
@@ -56,7 +56,7 @@ export function Navbar() {
         className="fixed top-7 left-1/2 -translate-x-1/2 z-50 group"
         style={linkStyle(0)}
       >
-        <span className="font-[family-name:var(--font-syne)] text-[18px] md:text-[20px] font-800 tracking-[0.08em] text-c-fg uppercase transition-all duration-500 group-hover:tracking-[0.16em]">
+        <span className="font-[family-name:var(--font-logo)] text-[18px] md:text-[20px] font-800 tracking-[0.08em] text-c-fg uppercase transition-all duration-500 group-hover:tracking-[0.16em]">
           CHAOS
         </span>
       </a>
@@ -65,7 +65,7 @@ export function Navbar() {
       <a
         href="#manifesto"
         onClick={(e) => handleClick(e, "#manifesto")}
-        className="fixed top-8 right-[140px] md:right-[180px] z-50 font-[family-name:var(--font-space-grotesk)] text-[14px] md:text-[16px] font-500 tracking-[-0.02em] text-c-fg-secondary hover:text-c-fg transition-colors duration-300"
+        className="fixed top-8 right-[140px] md:right-[180px] z-50 font-[family-name:var(--font-body)] text-[14px] md:text-[16px] font-500 tracking-[-0.02em] text-c-fg-secondary hover:text-c-fg transition-colors duration-300"
         style={linkStyle(0.2)}
       >
         About
@@ -74,7 +74,7 @@ export function Navbar() {
       <a
         href="#contact"
         onClick={(e) => handleClick(e, "#contact")}
-        className="fixed top-8 right-[76px] md:right-[100px] z-50 font-[family-name:var(--font-space-grotesk)] text-[14px] md:text-[16px] font-500 tracking-[-0.02em] text-c-fg-secondary hover:text-c-fg transition-colors duration-300"
+        className="fixed top-8 right-[76px] md:right-[100px] z-50 font-[family-name:var(--font-body)] text-[14px] md:text-[16px] font-500 tracking-[-0.02em] text-c-fg-secondary hover:text-c-fg transition-colors duration-300"
         style={linkStyle(0.3)}
       >
         Contact
@@ -115,7 +115,7 @@ export function Navbar() {
           {[...Array(3)].map((_, i) => (
             <span
               key={i}
-              className="font-[family-name:var(--font-dm-mono)] text-[9px] tracking-[0.3em] uppercase text-c-fg-ghost px-4"
+              className="font-[family-name:var(--font-typewriter)] text-[9px] tracking-[0.3em] uppercase text-c-fg-ghost px-4"
             >
               scroll down
             </span>

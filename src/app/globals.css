@@ -5,9 +5,9 @@
   --bg: #000000;
   --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --font-display: var(--font-syne);
-  --font-body: var(--font-space-grotesk);
-  --font-mono: var(--font-dm-mono);
+  --font-display: var(--font-logo);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-typewriter);
 
   /* Foreground semantic tokens */
   --c-fg: #ffffff;
