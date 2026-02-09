@@ -45,7 +45,7 @@
 /* ─── Light mode ─── */
 @media (prefers-color-scheme: light) {
   :root {
-    --bg: #f5f2ed;
+    --bg: #ffffff;
 
     --c-fg: #1a1a1a;
     --c-fg-primary: rgba(0, 0, 0, 0.88);
@@ -57,8 +57,8 @@
     --c-fg-whisper: rgba(0, 0, 0, 0.16);
     --c-fg-phantom: rgba(0, 0, 0, 0.04);
 
-    --c-surface: rgba(245, 242, 237, 0.85);
-    --c-surface-dim: rgba(245, 242, 237, 0.8);
+    --c-surface: rgba(255, 255, 255, 0.85);
+    --c-surface-dim: rgba(255, 255, 255, 0.8);
 
     --c-border: rgba(0, 0, 0, 0.06);
     --c-border-subtle: rgba(0, 0, 0, 0.1);
@@ -67,7 +67,7 @@
 
     --hero-glow: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.02) 0%, transparent 70%);
     --selection-bg: rgba(0, 0, 0, 0.1);
-    --scrollbar-track: #f5f2ed;
+    --scrollbar-track: #ffffff;
     --scrollbar-thumb: #ccc;
     --scanline-color: rgba(0, 0, 0, 0.025);
     --grain-blend: soft-light;
