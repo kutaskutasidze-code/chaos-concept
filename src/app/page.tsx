@@ -7,6 +7,7 @@ import { CinemaReveal } from "@/components/CinemaReveal";
 import { ScrambleText } from "@/components/ScrambleText";
 import { Marquee } from "@/components/Marquee";
 import { HorizontalRule } from "@/components/HorizontalRule";
+import { Navbar } from "@/components/Navbar";
 
 const BRANDS = [
   "HOUSE OF HOLLAND",
@@ -34,66 +35,6 @@ const IMAGES = {
   vibe: { src: "/chaos08-.jpg", alt: "Store atmosphere", label: "THE VIBE", ratio: "1/1" },
   form: { src: "/chaos09-.jpg", alt: "Back view styling", label: "THE FORM", ratio: "1/1" },
 };
-
-function Header() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 transition-all duration-500 ${
-        scrolled
-          ? "h-14 bg-c-surface backdrop-blur-sm border-b border-c-border"
-          : "h-20 bg-transparent"
-      }`}
-    >
-      <a
-        href="#"
-        className="font-[family-name:var(--font-syne)] text-sm font-700 tracking-[0.2em] uppercase text-c-fg"
-      >
-        CHAOS
-      </a>
-      <nav className="flex items-center gap-6">
-        <a
-          href="#manifesto"
-          className="font-[family-name:var(--font-dm-mono)] text-[11px] tracking-[0.1em] uppercase text-c-fg-tertiary hover:text-c-fg transition-colors duration-300"
-        >
-          About
-        </a>
-        <a
-          href="#gallery"
-          className="font-[family-name:var(--font-dm-mono)] text-[11px] tracking-[0.1em] uppercase text-c-fg-tertiary hover:text-c-fg transition-colors duration-300"
-        >
-          Gallery
-        </a>
-        <a
-          href="#contact"
-          className="font-[family-name:var(--font-dm-mono)] text-[11px] tracking-[0.1em] uppercase text-c-fg-tertiary hover:text-c-fg transition-colors duration-300"
-        >
-          Find Us
-        </a>
-        <a
-          href="https://www.instagram.com/chaosconcept/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-c-fg-tertiary hover:text-c-fg transition-colors duration-300"
-          aria-label="Instagram"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <rect x="2" y="2" width="20" height="20" rx="5" />
-            <circle cx="12" cy="12" r="5" />
-            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
-          </svg>
-        </a>
-      </nav>
-    </header>
-  );
-}
 
 function Hero() {
   const [loaded, setLoaded] = useState(false);
@@ -160,34 +101,6 @@ function Hero() {
         </p>
       </div>
 
-      {/* Scroll indicator */}
-      <div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
-        style={{
-          opacity: loaded ? 1 : 0,
-          transition: "opacity 1s ease 1.5s",
-        }}
-      >
-        <span className="font-[family-name:var(--font-dm-mono)] text-[9px] tracking-[0.2em] uppercase text-c-fg-whisper">
-          Scroll
-        </span>
-        <div className="w-[1px] h-8 bg-c-border-subtle relative overflow-hidden">
-          <div
-            className="absolute top-0 left-0 w-full bg-c-fg-muted"
-            style={{
-              height: "50%",
-              animation: "scrollPulse 2s ease infinite",
-            }}
-          />
-        </div>
-      </div>
-
-      <style jsx>{`
-        @keyframes scrollPulse {
-          0% { transform: translateY(-100%); }
-          100% { transform: translateY(200%); }
-        }
-      `}</style>
     </section>
   );
 }
@@ -424,7 +337,7 @@ function Gallery() {
 
 function Brands() {
   return (
-    <section className="py-32 md:py-48 px-6 md:px-10 border-y border-c-border">
+    <section id="brands" className="py-32 md:py-48 px-6 md:px-10 border-y border-c-border">
       <div className="max-w-5xl mx-auto">
         <CinemaReveal direction="left">
           <span className="font-[family-name:var(--font-dm-mono)] text-[10px] tracking-[0.3em] uppercase text-c-fg-faint block mb-12">
@@ -587,7 +500,7 @@ function Footer() {
 export default function Home() {
   return (
     <SmoothScroll>
-      <Header />
+      <Navbar />
       <main>
         <Hero />
         <BrandMarquee />
