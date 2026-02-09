@@ -1,26 +1,324 @@
 @import "tailwindcss";
 
+/* ─── Dark mode (default) ─── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #000000;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --font-display: var(--font-syne);
+  --font-body: var(--font-space-grotesk);
+  --font-mono: var(--font-dm-mono);
+
+  /* Foreground semantic tokens */
+  --c-fg: #ffffff;
+  --c-fg-primary: rgba(255, 255, 255, 0.9);
+  --c-fg-secondary: rgba(255, 255, 255, 0.7);
+  --c-fg-tertiary: rgba(255, 255, 255, 0.5);
+  --c-fg-muted: rgba(255, 255, 255, 0.4);
+  --c-fg-faint: rgba(255, 255, 255, 0.3);
+  --c-fg-ghost: rgba(255, 255, 255, 0.25);
+  --c-fg-whisper: rgba(255, 255, 255, 0.2);
+  --c-fg-phantom: rgba(255, 255, 255, 0.03);
+
+  /* Surface tokens */
+  --c-surface: rgba(0, 0, 0, 0.8);
+  --c-surface-dim: rgba(0, 0, 0, 0.7);
+
+  /* Border tokens */
+  --c-border: rgba(255, 255, 255, 0.05);
+  --c-border-subtle: rgba(255, 255, 255, 0.1);
+  --c-border-hover: rgba(255, 255, 255, 0.2);
+  --c-border-strong: rgba(255, 255, 255, 0.5);
+
+  /* Effect-specific */
+  --hero-glow: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+  --selection-bg: rgba(255, 255, 255, 0.15);
+  --scrollbar-track: #000;
+  --scrollbar-thumb: #333;
+  --scanline-color: rgba(0, 0, 0, 0.04);
+  --grain-blend: overlay;
+  --crt-blend: screen;
+  --glitch-a: #ff0040;
+  --glitch-b: #0ff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+/* ─── Light mode ─── */
+@media (prefers-color-scheme: light) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg: #f5f2ed;
+
+    --c-fg: #1a1a1a;
+    --c-fg-primary: rgba(0, 0, 0, 0.88);
+    --c-fg-secondary: rgba(0, 0, 0, 0.65);
+    --c-fg-tertiary: rgba(0, 0, 0, 0.5);
+    --c-fg-muted: rgba(0, 0, 0, 0.4);
+    --c-fg-faint: rgba(0, 0, 0, 0.3);
+    --c-fg-ghost: rgba(0, 0, 0, 0.22);
+    --c-fg-whisper: rgba(0, 0, 0, 0.16);
+    --c-fg-phantom: rgba(0, 0, 0, 0.04);
+
+    --c-surface: rgba(245, 242, 237, 0.85);
+    --c-surface-dim: rgba(245, 242, 237, 0.8);
+
+    --c-border: rgba(0, 0, 0, 0.06);
+    --c-border-subtle: rgba(0, 0, 0, 0.1);
+    --c-border-hover: rgba(0, 0, 0, 0.2);
+    --c-border-strong: rgba(0, 0, 0, 0.45);
+
+    --hero-glow: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.02) 0%, transparent 70%);
+    --selection-bg: rgba(0, 0, 0, 0.1);
+    --scrollbar-track: #f5f2ed;
+    --scrollbar-thumb: #ccc;
+    --scanline-color: rgba(0, 0, 0, 0.025);
+    --grain-blend: soft-light;
+    --crt-blend: multiply;
+    --glitch-a: #cc0033;
+    --glitch-b: #0099cc;
   }
 }
 
+/* ─── Tailwind theme ─── */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-c-fg: var(--c-fg);
+  --color-c-fg-primary: var(--c-fg-primary);
+  --color-c-fg-secondary: var(--c-fg-secondary);
+  --color-c-fg-tertiary: var(--c-fg-tertiary);
+  --color-c-fg-muted: var(--c-fg-muted);
+  --color-c-fg-faint: var(--c-fg-faint);
+  --color-c-fg-ghost: var(--c-fg-ghost);
+  --color-c-fg-whisper: var(--c-fg-whisper);
+  --color-c-fg-phantom: var(--c-fg-phantom);
+  --color-c-surface: var(--c-surface);
+  --color-c-surface-dim: var(--c-surface-dim);
+  --color-c-border: var(--c-border);
+  --color-c-border-subtle: var(--c-border-subtle);
+  --color-c-border-hover: var(--c-border-hover);
+  --color-c-border-strong: var(--c-border-strong);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+/* ─── Base ─── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--c-fg);
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background: var(--selection-bg);
+  color: var(--c-fg);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+}
+
+/* ─── Film Grain ─── */
+.film-grain-css {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: var(--grain-blend);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  animation: grainShift 0.5s steps(8) infinite;
+}
+
+@keyframes grainShift {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-2%, -3%); }
+  20% { transform: translate(3%, 1%); }
+  30% { transform: translate(-1%, 2%); }
+  40% { transform: translate(2%, -2%); }
+  50% { transform: translate(-3%, 3%); }
+  60% { transform: translate(1%, -1%); }
+  70% { transform: translate(-2%, 2%); }
+  80% { transform: translate(3%, -3%); }
+  90% { transform: translate(-1%, 1%); }
+}
+
+/* ─── Scanlines ─── */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 9997;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    var(--scanline-color) 2px,
+    var(--scanline-color) 4px
+  );
+}
+
+/* ─── CRT Image ─── */
+.crt-image {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.crt-image__base {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s var(--ease);
+}
+
+.crt-image__r,
+.crt-image__g,
+.crt-image__b {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  mix-blend-mode: var(--crt-blend);
+  transition: opacity 0.3s, transform 0.4s var(--ease-out-expo);
+}
+
+.crt-image__r {
+  filter: grayscale(1) brightness(1.2) sepia(1) hue-rotate(-30deg) saturate(3);
+}
+
+.crt-image__g {
+  filter: grayscale(1) brightness(1.2) sepia(1) hue-rotate(80deg) saturate(3);
+}
+
+.crt-image__b {
+  filter: grayscale(1) brightness(1.2) sepia(1) hue-rotate(200deg) saturate(3);
+}
+
+.crt-image.is-active .crt-image__base {
+  opacity: 0;
+}
+
+.crt-image.is-active .crt-image__r {
+  opacity: 0.7;
+  transform: translate(-3px, 1px);
+}
+
+.crt-image.is-active .crt-image__g {
+  opacity: 0.7;
+  transform: translate(2px, -1px);
+}
+
+.crt-image.is-active .crt-image__b {
+  opacity: 0.7;
+  transform: translate(1px, 2px);
+}
+
+/* ─── Glitch text ─── */
+@keyframes glitch-1 {
+  0%, 100% { clip-path: inset(0 0 95% 0); transform: translate(-2px, 0); }
+  20% { clip-path: inset(30% 0 40% 0); transform: translate(2px, 0); }
+  40% { clip-path: inset(60% 0 10% 0); transform: translate(-1px, 0); }
+  60% { clip-path: inset(10% 0 70% 0); transform: translate(1px, 0); }
+  80% { clip-path: inset(80% 0 5% 0); transform: translate(-2px, 0); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { clip-path: inset(95% 0 0 0); transform: translate(2px, 0); }
+  20% { clip-path: inset(40% 0 30% 0); transform: translate(-2px, 0); }
+  40% { clip-path: inset(10% 0 60% 0); transform: translate(1px, 0); }
+  60% { clip-path: inset(70% 0 10% 0); transform: translate(-1px, 0); }
+  80% { clip-path: inset(5% 0 80% 0); transform: translate(2px, 0); }
+}
+
+.glitch-text {
+  position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text::before {
+  color: var(--glitch-a);
+  animation: glitch-1 3s infinite linear alternate-reverse;
+  z-index: -1;
+}
+
+.glitch-text::after {
+  color: var(--glitch-b);
+  animation: glitch-2 3s infinite linear alternate-reverse;
+  z-index: -1;
+}
+
+/* ─── Hero glow ─── */
+.hero-glow {
+  background: var(--hero-glow);
+}
+
+/* ─── Marquee ─── */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 20s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ─── Pulse glow ─── */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* ─── Scramble cursor ─── */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* ─── Horizontal rule animated ─── */
+.hr-reveal {
+  height: 1px;
+  background: var(--c-border-subtle);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 1.2s var(--ease-out-expo);
+}
+
+.hr-reveal.is-visible {
+  transform: scaleX(1);
 }
